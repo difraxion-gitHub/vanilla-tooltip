@@ -1,3 +1,5 @@
+////////////////// The MIT License (MIT) Copyright (c) 2014 nahojd - https://github.com/nahojd/vanilla-tooltip/blob/master/LICENSE //////////////////
+
 (function() {
 	function Tip() {
 		function isTip(element) {
@@ -49,7 +51,7 @@
 				left = 10;
 			}
 			popover.style.left = left + 'px';
-			popover.style.top = (targetRect.top + scrollY - popover.clientHeight - 5) + 'px';
+			popover.style.top = (targetRect.top + scrollY - popover.clientHeight - 12) + 'px';
 			popover.className = popover.className + ' popover-clone';
 
 			//Position the arrow over the clicked element
@@ -78,6 +80,7 @@
 
 		function init() {
 			addEventListener(window, 'resize', hidePopovers);
+			addEventListener(window, 'mouseout', hidePopovers);
 
 			addEventListener(document, 'click', function(e) {
 				var target = e.target || e.srcElement;
@@ -90,6 +93,7 @@
 		
 
 		return {
+           		mouseout: hidePopovers,
 			click: showTooltip,
 			init: init
 		};
